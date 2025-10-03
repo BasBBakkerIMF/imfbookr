@@ -1,0 +1,30 @@
+Package: imfbookr
+Type: Package
+Title: Generate IMF-style Charts
+Version: 0.1.0
+Authors@R: c(
+  person("Bas", "Bakker", email="BBakker@imf.org", role = c("aut", "cre")),
+  person("Greta", "Polo", email="gpolo@imf.org", role = c("aut")))
+Maintainer: Bas Bakker <bbakker@imf.org>, Greta Polo <gpolo@imf.org>
+URL: http://r-tutorial
+Description: Library to generate IMF-style charts for publications.
+    Functions to generate line charts, bar charts, scatter charts.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    usethis,
+    ggplot2,
+    ggpubr,
+    magrittr,
+    sysfonts,
+    grid,
+    rsdmx,
+    AzureAuth,
+    lubridate,
+    zoo
+RoxygenNote: 7.3.1
+Roxygen: list(markdown = TRUE)
+Depends: 
+    R (>= 2.10)
