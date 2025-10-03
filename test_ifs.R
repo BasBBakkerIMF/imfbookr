@@ -7,7 +7,7 @@ library(tidyverse)
 library(ggplot2)
 library(ggpubr)
 library(patchwork)
-library(bookr)
+library(imfbookr)
 
 # Filter on date
 START <- as.Date("2000-01-01")
