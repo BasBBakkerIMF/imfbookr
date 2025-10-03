@@ -1,6 +1,6 @@
 # imfbookr
 
-`imfbookr` provides helper functions to streamline IMF-style book writing with reproducible R code and standardized charting. It is based on the original `bookr` package, extended for IMF workflows.
+`imfbookr` provides helper functions to streamline IMF-style style with reproducible R code and standardized charting.
 
 ---
 
@@ -52,7 +52,7 @@ test_data <- data.frame(
   value2   = runif(12, 20, 80)
 )
 ```
-Look at default ggplot behavior
+### Now let's look at default ggplot behavior
 ```r
 # Line
 ggplot(test_data, aes(dates, value1, color = category)) +
@@ -71,7 +71,7 @@ ggplot(test_data, aes(value1, value2, color = category)) +
   labs(title = "Default Scatter Colors")
 ```
 
-Apply the IMF palette to any plot
+### This is how we would apply the IMF palette to any plot
 ```r
 # Line with IMF colors
 ggplot(test_data, aes(dates, value1, color = category)) +
@@ -91,7 +91,7 @@ ggplot(test_data, aes(value1, value2, color = category)) +
   scale_imf_colors() +
   labs(title = "IMF Scatter Colors")
 ```
-Creating an IMF Theme Panel
+### This is the panel theme for IMF Theme Panel
 ```r
 library(patchwork)
 
@@ -115,7 +115,7 @@ p3 <- ggplot(test_data, aes(value1, value2, color = category)) +
                   subtitle = "Multiple plots in a panel layout") &
   theme_imf_panel()
 ```
-Dual Axis Example
+### Finally let's look at a dual axis example
 ```r
 df <- tibble::tibble(
   date  = seq.Date(from = as.Date("2020-01-01"), by = "month", length.out = 12),
