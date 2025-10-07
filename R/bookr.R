@@ -1,11 +1,11 @@
-# Ensure Segoe UI is recognized by windowsFonts
-windowsFonts(`Segoe UI` = windowsFont("Segoe UI"))
+# Register Segoe UI with Windows graphics device
+windowsFonts(SegoeUI = windowsFont("Segoe UI"))
 
-# Define Primary Font
-primary_font <- if ("Segoe UI" %in% names(windowsFonts())) {
-  "Segoe UI"
+# Define Primary Font (use SegoeUI if available, fallback to Arial)
+primary_font <- if ("SegoeUI" %in% names(windowsFonts())) {
+  "SegoeUI"
 } else {
-  "Arial"  # Fallback if Segoe UI isn't installed
+  "Arial"  # fallback if not available
 }
 
 # Define pipe operator
