@@ -1,3 +1,8 @@
+---
+title: "imfbookr"
+format: 'html'
+---
+
 # imfbookr
 
 `imfbookr` provides helper functions to streamline IMF-style book writing with reproducible R code and standardized charting. It is based on the original `bookr` package, extended for IMF workflows.
@@ -6,7 +11,7 @@
 
 ## Pre-requisites
 
-Before installing `imfbookr`, you need devtools if you do not have it. 
+Before installing `imfbookr`, you need devtools ifyou do not have it. 
 
 ```r
 # install devtools if you don't have it
