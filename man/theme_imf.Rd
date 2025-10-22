@@ -5,7 +5,7 @@
 \title{IMF-Themed ggplot2 Theme}
 \usage{
 theme_imf(
-  myfont = primary_font,
+  myfont = .imf_primary_font(),
   myfontColor = imfblue,
   use_imf_colors = TRUE,
   legend_title_format = ggplot2::element_blank(),
@@ -18,7 +18,7 @@ theme_imf(
 )
 
 theme_imf(
-  myfont = primary_font,
+  myfont = .imf_primary_font(),
   myfontColor = imfblue,
   use_imf_colors = TRUE,
   legend_title_format = ggplot2::element_blank(),
@@ -31,7 +31,7 @@ theme_imf(
 )
 }
 \arguments{
-\item{myfont}{Font family to use (default: Segoe UI or available alternative).}
+\item{myfont}{Font family to use (default: option 'imfbookr.primary_font' or 'Arial').}
 
 \item{myfontColor}{Color for title and subtitle (default: \code{imfblue}).}
 

@@ -49,45 +49,38 @@ A4_colors <- c(imfblue, imfgreen, imfdark_red, imfgrey, "black")
 #'
 #' Extended IMF color palette for bar charts, including lighter and darker variations.
 #' @export
-A4_colors_bar <- c(imfblue, imfgreen, imfdark_red, imfgrey, "black",
-                   imflight_blue, imflight_green, imflight_red,
-                   imflight_grey, imfdark_red, imfdark_blue)
+A4_colors_bar <- c(
+  imfblue, imfgreen, imfdark_red, imfgrey, "black",
+  imflight_blue, imflight_green, imflight_red,
+  imflight_grey, imfdark_red, imfdark_blue
+)
 
 #' Apply IMF Colors to ggplot2 helper function dynamically
 #' @export
 scale_imf_colors <- function(n = NULL) {
   available_colors <- A4_colors_bar  # Default to IMF Bar Colors
-
+  
   # If the dataset has more categories than colors, recycle colors safely
   if (!is.null(n) && n > length(available_colors)) {
     warning("Not enough predefined IMF colors. Recycling colors.")
     available_colors <- rep(available_colors, length.out = n)
   }
-
+  
   list(
     ggplot2::scale_color_manual(values = available_colors),
     ggplot2::scale_fill_manual(values = available_colors)
   )
 }
 
-# Ensure Segoe UI or a fallback font is available
-windowsFonts(
-  IMF = windowsFont("Segoe UI"),
-  Fallback = windowsFont("Arial")  # Fallback to Arial if Segoe UI is missing
-)
-
-# Define Primary Font
-primary_font <- if ("Segoe UI" %in% names(windowsFonts())) {
-  "Segoe UI"
-} else {
-  "Arial"  # Default to Arial if Segoe UI isn't available
-}
+# ----------------------------------------------------------------------
+# Internal: primary font getter (reads option set in .onLoad; falls back to Arial)
+.imf_primary_font <- function() getOption("imfbookr.primary_font", "Arial")
 
 # ------------------------------------------------------------------------------
 #' IMF-Themed ggplot2 Theme
 #'
 #' Applies an IMF-style ggplot2 theme with customized fonts, colors, and layout.
-#' @param myfont Font family to use (default: Segoe UI or available alternative).
+#' @param myfont Font family to use (default: option 'imfbookr.primary_font' or 'Arial').
 #' @param myfontColor Color for title and subtitle (default: `imfblue`).
 #' @param use_imf_colors Logical. If true (Default), applies 'scale_imf_colors()'.
 #' @param legend_title_format Formatting for the legend title (default: `element_blank()`).
@@ -96,30 +89,37 @@ primary_font <- if ("Segoe UI" %in% names(windowsFonts())) {
 #' @param legend_key_height,legend_key_width,legend_spacing_x,legend_spacing_y Size and spacing of legend elements.
 #' @return A ggplot2 theme.
 #' @export
-theme_imf <- function(myfont = primary_font, myfontColor = imfblue,
-                      use_imf_colors = TRUE,
-                      legend_title_format = ggplot2::element_blank(),
-                      legend_position = "bottom", legend_direction = "horizontal",
-                      legend_key_height = grid::unit(0.45, "cm"), legend_key_width = grid::unit(1.3, "cm"),
-                      legend_spacing_x = grid::unit(0.2, "cm"), legend_spacing_y = grid::unit(0.25, "cm")) {
-
+theme_imf <- function(
+    myfont = .imf_primary_font(),
+    myfontColor = imfblue,
+    use_imf_colors = TRUE,
+    legend_title_format = ggplot2::element_blank(),
+    legend_position = "bottom", legend_direction = "horizontal",
+    legend_key_height = grid::unit(0.45, "cm"),
+    legend_key_width  = grid::unit(1.3, "cm"),
+    legend_spacing_x  = grid::unit(0.2, "cm"),
+    legend_spacing_y  = grid::unit(0.25, "cm")
+) {
+  
   # Ensure `grid` is loaded before using `unit()`
   if (!requireNamespace("grid", quietly = TRUE)) {
     stop("Package 'grid' is required but not installed.")
   }
-
+  
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(size = 18, family = myfont),
       axis.text = ggplot2::element_text(color = "black", size = 18, family = myfont),
       axis.text.x = ggplot2::element_text(size = 18, family = myfont),
-      axis.text.y = ggplot2::element_text(size = 18, family = myfont,
-                                          margin = grid::unit(c(0, 3.5, 0, 0), "mm")),
+      axis.text.y = ggplot2::element_text(
+        size = 18, family = myfont,
+        margin = grid::unit(c(0, 3.5, 0, 0), "mm")
+      ),
       axis.title.x = ggplot2::element_blank(),
       axis.title.y = ggplot2::element_blank(),
       axis.title.y.right = ggplot2::element_blank(),
-      #axis.title.x = ggplot2::element_text(size = 18, family = myfont), #if wanted to add XY titles
-      #axis.title.y = ggplot2::element_text(size = 18, family = myfont),
+      # axis.title.x = ggplot2::element_text(size = 18, family = myfont), # if wanted
+      # axis.title.y = ggplot2::element_text(size = 18, family = myfont),
       axis.ticks.x = ggplot2::element_line(colour = imflight_grey),
       axis.ticks.y = ggplot2::element_line(colour = imflight_grey),
       axis.ticks.length.x = grid::unit(-2, "mm"),
@@ -147,24 +147,31 @@ theme_imf <- function(myfont = primary_font, myfontColor = imfblue,
 #' @inheritParams theme_imf
 #' @return A ggplot2 theme for panel charts.
 #' @export
-theme_imf_panel <- function(myfont = primary_font, myfontColor = imfblue,
-                            legend_title_format = ggplot2::element_blank(),
-                            legend_position = "bottom", legend_direction = "horizontal",
-                            legend_key_height = grid::unit(0.45, "cm"), legend_key_width = grid::unit(1.3, "cm"),
-                            legend_spacing_x = grid::unit(0.2, "cm"), legend_spacing_y = grid::unit(0.25, "cm")) {
-
+theme_imf_panel <- function(
+    myfont = .imf_primary_font(),
+    myfontColor = imfblue,
+    legend_title_format = ggplot2::element_blank(),
+    legend_position = "bottom", legend_direction = "horizontal",
+    legend_key_height = grid::unit(0.45, "cm"),
+    legend_key_width  = grid::unit(1.3, "cm"),
+    legend_spacing_x  = grid::unit(0.2, "cm"),
+    legend_spacing_y  = grid::unit(0.25, "cm")
+) {
+  
   # Ensure `grid` is available for unit()
   if (!requireNamespace("grid", quietly = TRUE)) {
     stop("Package 'grid' is required but not installed.")
   }
-
+  
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(size = 14, family = myfont),
       axis.text = ggplot2::element_text(color = "black", size = 10, family = myfont),
       axis.text.x = ggplot2::element_text(size = 10, family = myfont),
-      axis.text.y = ggplot2::element_text(size = 10, family = myfont,
-                                          margin = grid::unit(c(0, 3.5, 0, 0), "mm")),
+      axis.text.y = ggplot2::element_text(
+        size = 10, family = myfont,
+        margin = grid::unit(c(0, 3.5, 0, 0), "mm")
+      ),
       axis.title.x = ggplot2::element_blank(),
       axis.title.y = ggplot2::element_blank(),
       axis.title.y.right = ggplot2::element_blank(),
