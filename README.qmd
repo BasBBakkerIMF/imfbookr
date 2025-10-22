@@ -7,13 +7,13 @@ format: 'html'
 
 `imfbookr` provides helper functions to streamline IMF-style book writing with reproducible R code and standardized charting. It is based on the original `bookr` package, extended for IMF workflows.
 
----
+------------------------------------------------------------------------
 
 ## Pre-requisites
 
-Before installing `imfbookr`, you need devtools ifyou do not have it. 
+Before installing `imfbookr`, you need devtools ifyou do not have it.
 
-```r
+``` r
 # install devtools if you don't have it
 install.packages("devtools")
 library(devtools)
@@ -23,14 +23,14 @@ library(devtools)
 
 On most computers you can install directly from GitHub:
 
-```r
+``` r
 library(remotes)
 remotes::install_git("https://github.com/BasBBakkerIMF/imfbookr.git")
 ```
 
 On some IMF computers that does not work. In that case, use this fallback:
 
-```r
+``` r
 url <- "https://codeload.github.com/BasBBakkerIMF/imfbookr/tar.gz/HEAD"
 tf  <- tempfile(fileext = ".tar.gz")
 
@@ -40,27 +40,31 @@ remotes::install_local(tf)          # install from the downloaded file
 
 After installation, load the package with:
 
-```r
+``` r
 library(imfbookr)
 ```
 
 ## Features
 
-- Predefined **IMF color palettes** for charts.  
-- Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).  
-- Helper functions to quickly create **line, bar, scatter, and dual-axis charts** with consistent IMF style.  
-- Built-in defaults for **plot sizing and saving** (`ggsave_imf`).  
-- Utility functions to streamline reproducible graphics for IMF reports and presentations.  
+-   Predefined **IMF color palettes** for charts.
+-   Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).
+-   Helper functions to quickly create **line, bar, scatter, and dual-axis charts** with consistent IMF style.
+-   Built-in defaults for **plot sizing and saving** (`ggsave_imf`).
+-   Utility functions to streamline reproducible graphics for IMF reports and presentations.
 
 ## Usage
 
 The following examples demonstrate how to use `imfbookr` functions to quickly generate IMF-style charts. We first create some example data, then compare default `ggplot2` styling with the custom IMF palette and themes.
 
+## IMF Color Palettes
+
+The package includes a set of predefined color constants and palettes consistent with IMF/WEO visual standards. You can use these colors directly in plots or via helper scales like scale_imf_colors().
+
 ### Quick start (example data)
 
 To illustrate functionality, we generate a simple dataset with 12 months of values across three categories:
 
-```r
+``` r
 library(ggplot2)
 library(dplyr)
 
@@ -75,7 +79,7 @@ test_data <- data.frame(
 
 Before applying IMF-specific functions, here’s what the default ggplot2 output looks like for a line, bar, and scatter chart.
 
-```r
+``` r
 # Line
 ggplot(test_data, aes(dates, value1, color = category)) +
   geom_line(size = 1.5) +
@@ -95,7 +99,7 @@ ggplot(test_data, aes(value1, value2, color = category)) +
 
 Now we apply the IMF color palette using `scale_imf_colors()`. This ensures all charts use standardized IMF colors.
 
-```r
+``` r
 # Line with IMF colors
 ggplot(test_data, aes(dates, value1, color = category)) +
   geom_line(size = 1.5) +
@@ -115,9 +119,9 @@ ggplot(test_data, aes(value1, value2, color = category)) +
   labs(title = "IMF Scatter Colors")
 ```
 
-For multi-chart presentations, `theme_imf_panel()` combined with `patchwork` makes it easy to arrange multiple plots in a consistent layout. 
+For multi-chart presentations, `theme_imf_panel()` combined with `patchwork` makes it easy to arrange multiple plots in a consistent layout.
 
-```r
+``` r
 library(patchwork)
 
 p1 <- ggplot(test_data, aes(dates, value1, color = category)) +
@@ -141,9 +145,9 @@ p3 <- ggplot(test_data, aes(value1, value2, color = category)) +
   theme_imf_panel()
 ```
 
-`imfbookr` also supports dual-axis plots, useful for showing two related time series on different scales. 
+`imfbookr` also supports dual-axis plots, useful for showing two related time series on different scales.
 
-```r
+``` r
 df <- tibble::tibble(
   date  = seq.Date(from = as.Date("2020-01-01"), by = "month", length.out = 12),
   left  = rnorm(12, 100, 10),
@@ -159,3 +163,5 @@ plot_dual_axis(
   y_right_lbl  = "Inflation Index"
 )
 ```
+
+Additional charting functions to create simple line charts, bar charts, and scatter charts are also available within the R book under the custom functions tutorial in Various Issues.

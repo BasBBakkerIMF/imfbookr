@@ -45,7 +45,12 @@ library(imfbookr)
 - Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).  
 - Helper functions to quickly create **line, bar, scatter, and dual-axis charts** with consistent IMF style.  
 - Built-in defaults for **plot sizing and saving** (`ggsave_imf`).  
-- Utility functions to streamline reproducible graphics for IMF reports and presentations.  
+- Utility functions to streamline reproducible graphics for IMF reports and presentations. 
+
+## IMF Color Palettes
+
+The package includes a set of predefined color constants and palettes consistent with IMF/WEO visual standards.
+You can use these colors directly in plots or via helper scales like scale_imf_colors().
 
 ## Usage
 
@@ -154,3 +159,4 @@ plot_dual_axis(
   y_right_lbl  = "Inflation Index"
 )
 ```
+Additional charting functions to create simple line charts, bar charts, and scatter charts are also available within the R book under the custom functions tutorial in Various Issues. 
