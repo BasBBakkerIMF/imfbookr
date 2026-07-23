@@ -246,7 +246,7 @@ ggline_mod <- function (data, x, y, group = 1, numeric.x.axis = FALSE, combine =
 #'
 #' Create a ggplot2 line chart with IMF stylings. Takes in at minimum a
 #' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_bar_chart()] and [bookr::plot_scatter_chart()].
+#' See also [imfbookr::plot_bar_chart()] and [imfbookr::plot_scatter_chart()].
 #' Wrapper function for [ggpubr::ggline()], which is a wrapper for [pggplot2].
 #'
 #' @param input_data Input data such as a data.frame
@@ -413,7 +413,7 @@ plot_line_chart <- function(input_data,
 #'
 #' Creates a [ggplot2] bar chart with IMF stylings. Takes in at minimum a
 #' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_line_chart()] and [bookr::plot_scatter_chart()].
+#' See also [imfbookr::plot_line_chart()] and [imfbookr::plot_scatter_chart()].
 #' Wrapper function for [ggpubr::ggbarplot()], which is a wrapper for [ggplot2].
 #'
 #' @inheritParams plot_line_chart
@@ -571,7 +571,7 @@ plot_bar_chart <- function(input_data,
 #'
 #' Creates a [ggplot2] scatter chart with IMF stylings. Takes in at minimum a
 #' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_line_chart()] and [bookr::plot_bar_chart()].
+#' See also [imfbookr::plot_line_chart()] and [imfbookr::plot_bar_chart()].
 #' Wrapper function for [ggpubr::ggscatter()], which is a wrapper for [ggplot2].
 #'
 #' @inheritParams plot_line_chart

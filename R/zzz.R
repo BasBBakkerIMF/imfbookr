@@ -24,7 +24,7 @@
     showtext::showtext_auto(enable = TRUE)
   }
   fam <- getOption("imfbookr.primary_font", "Arial")
-  ggplot2::theme_set(bookr::theme_imf(myfont = fam))
+  ggplot2::theme_set(imfbookr::theme_imf(myfont = fam))
   try(graphics::par(family = fam), silent = TRUE)  # helps base plots on RStudioGD
   options(imf_plot_width = 9.46, imf_plot_height = 6.85, imf_dpi = 600)
   packageStartupMessage("IMFBookr loaded.", fam)
