@@ -17,7 +17,7 @@ plot_scatter_chart(
   point_label = NULL,
   label_repel = TRUE,
   font_label = c(7, imfgrey),
-  font_family = primary_font,
+  font_family = "Arial",
   x_label = "",
   y_label = "",
   plot_title = "",
@@ -30,10 +30,10 @@ plot_scatter_chart(
   legend_title_format = ggplot2::element_blank(),
   legend_position = "bottom",
   legend_direction = "horizontal",
-  legend_key_height = unit(0.45, "cm"),
-  legend_key_width = unit(1.3, "cm"),
-  legend_spacing_x = unit(0.2, "cm"),
-  legend_spacing_y = unit(0.25, "cm"),
+  legend_key_height = grid::unit(0.45, "cm"),
+  legend_key_width = grid::unit(1.3, "cm"),
+  legend_spacing_x = grid::unit(0.2, "cm"),
+  legend_spacing_y = grid::unit(0.25, "cm"),
   plotname = NA,
   charttype = "single",
   dpi = 600
@@ -62,7 +62,7 @@ plot_scatter_chart(
 
 \item{font_label}{Font parameters, defaults to \code{c(7, imfgrey)}}
 
-\item{font_family}{Font family, defaults to \code{primary_font} which should be Segoe UI}
+\item{font_family}{Font family, defaults to Arial.}
 
 \item{x_label}{X-axis label, defaults to empty string.}
 
@@ -106,10 +106,10 @@ given, use that column's values to change marker colors.}
 \item{fill_colors}{Colors to use to fill markers, defaults to \code{A4_colors}}
 }
 \description{
-Creates a \link{ggplot2} scatter chart with IMF stylings. Takes in at minimum a
+Creates a \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} scatter chart with IMF stylings. Takes in at minimum a
 data.frame or similar and column names for x and y.
-See also \code{\link[bookr:plot_line_chart]{bookr::plot_line_chart()}} and \code{\link[bookr:plot_bar_chart]{bookr::plot_bar_chart()}}.
-Wrapper function for \code{\link[ggpubr:ggscatter]{ggpubr::ggscatter()}}, which is a wrapper for \link{ggplot2}.
+See also \code{\link[=plot_line_chart]{plot_line_chart()}} and \code{\link[=plot_bar_chart]{plot_bar_chart()}}.
+Wrapper function for \code{\link[ggpubr:ggscatter]{ggpubr::ggscatter()}}, which is a wrapper for \link[ggplot2:ggplot2-package]{ggplot2::ggplot2}.
 }
 \examples{
 plot_scatter_chart(ifs, "USA", "China", plot_title="GDP: China vs US")

@@ -1,11 +1,15 @@
 
 #When initially loading, perform these steps
-install.packages("devtools")
-install.packages("usethat")
-install.packages("roxygen2")
+#install.packages("devtools")
+#install.packages("usethat")
+#install.packages("roxygen2")
+
+#install.packages("dplyr")
+library(dplyr)
 library(devtools)
-library(usethat)
+library(usethis)
 library(roxygen2)
+library(ggpubr)
 
 #Runall when making package changes
 #Restart R session

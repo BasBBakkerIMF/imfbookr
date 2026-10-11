@@ -19,7 +19,7 @@ plot_line_chart(
   point_label = NULL,
   point_repel = NULL,
   font_label = c(7, imfgrey),
-  font_family = primary_font,
+  font_family = "Arial",
   x_label = "",
   y_label = "",
   plot_title = "",
@@ -32,10 +32,10 @@ plot_line_chart(
   legend_title_format = ggplot2::element_blank(),
   legend_position = "bottom",
   legend_direction = "horizontal",
-  legend_key_height = unit(0.45, "cm"),
-  legend_key_width = unit(1.3, "cm"),
-  legend_spacing_x = unit(0.2, "cm"),
-  legend_spacing_y = unit(0.25, "cm"),
+  legend_key_height = grid::unit(0.45, "cm"),
+  legend_key_width = grid::unit(1.3, "cm"),
+  legend_spacing_x = grid::unit(0.2, "cm"),
+  legend_spacing_y = grid::unit(0.25, "cm"),
   plotname = NA,
   charttype = "single",
   dpi = 600
@@ -110,10 +110,15 @@ Determines the size of the output file if \code{plotname} is provided.}
 \item{dpi}{Resolution to use if \code{plotname} is specified and applicable. Defaults to \code{600}}
 }
 \description{
-Create a ggplot2 line chart with IMF stylings. Takes in at minimum a
-data.frame or similar and column names for x and y.
-See also \code{\link[bookr:plot_bar_chart]{bookr::plot_bar_chart()}} and \code{\link[bookr:plot_scatter_chart]{bookr::plot_scatter_chart()}}.
-Wrapper function for \code{\link[ggpubr:ggline]{ggpubr::ggline()}}, which is a wrapper for \link{pggplot2}.
+Create a ggplot2 line chart with IMF styling
+}
+\details{
+Creates a ggplot2 line chart with IMF styling. Takes, at minimum, a
+data frame and column names for the x and y variables.
+
+See also \code{\link[=plot_bar_chart]{plot_bar_chart()}} and \code{\link[=plot_scatter_chart]{plot_scatter_chart()}}.
+
+This function wraps \code{\link[ggpubr:ggline]{ggpubr::ggline()}}, which builds on \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}}.
 }
 \examples{
 plot_line_chart(ifs, "dates", "USA", plot_title="US CPI (2010=100)")

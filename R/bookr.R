@@ -1,12 +1,3 @@
-# Register Segoe UI with Windows graphics device
-windowsFonts(SegoeUI = windowsFont("Segoe UI"))
-
-# Define Primary Font (use SegoeUI if available, fallback to Arial)
-primary_font <- if ("SegoeUI" %in% names(windowsFonts())) {
-  "SegoeUI"
-} else {
-  "Arial"  # fallback if not available
-}
 
 # Define pipe operator
 usethis::use_pipe()
@@ -244,10 +235,14 @@ ggline_mod <- function (data, x, y, group = 1, numeric.x.axis = FALSE, combine =
 # ------------------------------------------------------------------------------
 #' Function to create a line chart with IMF stylings
 #'
-#' Create a ggplot2 line chart with IMF stylings. Takes in at minimum a
-#' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_bar_chart()] and [bookr::plot_scatter_chart()].
-#' Wrapper function for [ggpubr::ggline()], which is a wrapper for [pggplot2].
+#' Create a ggplot2 line chart with IMF styling
+#'
+#' Creates a ggplot2 line chart with IMF styling. Takes, at minimum, a
+#' data frame and column names for the x and y variables.
+#'
+#' See also [plot_bar_chart()] and [plot_scatter_chart()].
+#'
+#' This function wraps [ggpubr::ggline()], which builds on [ggplot2::ggplot()].
 #'
 #' @param input_data Input data such as a data.frame
 #' @param var_x,var_y Column names in `input_data` for x-axis and y-axis, respectively
@@ -308,7 +303,7 @@ plot_line_chart <- function(input_data,
                             point_label = NULL,
                             point_repel = NULL,
                             font_label = c(7, imfgrey),
-                            font_family = primary_font,
+                            font_family = "Arial",
                             x_label = "",
                             y_label = "",
                             plot_title = "",
@@ -322,10 +317,10 @@ plot_line_chart <- function(input_data,
                             legend_title_format=ggplot2::element_blank(),
                             legend_position="bottom",
                             legend_direction="horizontal",
-                            legend_key_height=unit(0.45, "cm"),
-                            legend_key_width=unit(1.3, "cm"),
-                            legend_spacing_x=unit(0.2, "cm"),
-                            legend_spacing_y=unit(0.25, "cm"),
+                            legend_key_height=grid::unit(0.45, "cm"),
+                            legend_key_width=grid::unit(1.3, "cm"),
+                            legend_spacing_x=grid::unit(0.2, "cm"),
+                            legend_spacing_y=grid::unit(0.25, "cm"),
                             # Save options
                             # If plotname is given, save
                             plotname = NA,
@@ -371,7 +366,7 @@ plot_line_chart <- function(input_data,
   if(isTRUE(panel)){
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf_panel(legend_title_format=legend_title_format,
+      theme_imf_panel_2027(legend_title_format=legend_title_format,
                       legend_position=legend_position,
                       legend_direction=legend_direction,
                       legend_key_height=legend_key_height,
@@ -383,7 +378,7 @@ plot_line_chart <- function(input_data,
   }else{
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf(legend_title_format=legend_title_format,
+      theme_imf_2027(legend_title_format=legend_title_format,
                 legend_position=legend_position,
                 legend_direction=legend_direction,
                 legend_key_height=legend_key_height,
@@ -413,7 +408,7 @@ plot_line_chart <- function(input_data,
 #'
 #' Creates a [ggplot2] bar chart with IMF stylings. Takes in at minimum a
 #' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_line_chart()] and [bookr::plot_scatter_chart()].
+#' See also [imfbookr::plot_line_chart()] and [imfbookr::plot_scatter_chart()].
 #' Wrapper function for [ggpubr::ggbarplot()], which is a wrapper for [ggplot2].
 #'
 #' @inheritParams plot_line_chart
@@ -471,10 +466,10 @@ plot_bar_chart <- function(input_data,
                            legend_title_format=ggplot2::element_blank(),
                            legend_position="bottom",
                            legend_direction="horizontal",
-                           legend_key_height=unit(0.45, "cm"),
-                           legend_key_width=unit(1.3, "cm"),
-                           legend_spacing_x=unit(0.2, "cm"),
-                           legend_spacing_y=unit(0.25, "cm"),
+                           legend_key_height=grid::unit(0.45, "cm"),
+                           legend_key_width=grid::unit(1.3, "cm"),
+                           legend_spacing_x=grid::unit(0.2, "cm"),
+                           legend_spacing_y=grid::unit(0.25, "cm"),
                            # Save options
                            # If plotname is given, save
                            plotname = NA,
@@ -534,7 +529,7 @@ plot_bar_chart <- function(input_data,
   if(isTRUE(panel)){
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf_panel(legend_title_format=legend_title_format,
+      theme_imf_panel_2027(legend_title_format=legend_title_format,
                       legend_position=legend_position,
                       legend_direction=legend_direction,
                       legend_key_height=legend_key_height,
@@ -544,7 +539,7 @@ plot_bar_chart <- function(input_data,
   }else{
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf(legend_title_format=legend_title_format,
+      theme_imf_2027(legend_title_format=legend_title_format,
                 legend_position=legend_position,
                 legend_direction=legend_direction,
                 legend_key_height=legend_key_height,
@@ -571,7 +566,7 @@ plot_bar_chart <- function(input_data,
 #'
 #' Creates a [ggplot2] scatter chart with IMF stylings. Takes in at minimum a
 #' data.frame or similar and column names for x and y.
-#' See also [bookr::plot_line_chart()] and [bookr::plot_bar_chart()].
+#' See also [imfbookr::plot_line_chart()] and [imfbookr::plot_bar_chart()].
 #' Wrapper function for [ggpubr::ggscatter()], which is a wrapper for [ggplot2].
 #'
 #' @inheritParams plot_line_chart
@@ -588,7 +583,7 @@ plot_bar_chart <- function(input_data,
 #' @param point_label Whether to label points, set column name if necessary, defaults to `NULL
 #' @param label_repel Whether to repel labels, defaults to `TRUE`
 #' @param font_label Font parameters, defaults to `c(7, imfgrey)`
-#' @param font_family Font family, defaults to `primary_font` which should be Segoe UI
+#' @param font_family Font family, defaults to Arial.
 #' @param plot_caption Caption for chart, defaults to empty string.
 #'
 #' @examples
@@ -609,7 +604,7 @@ plot_scatter_chart <- function(input_data,
                                point_label = NULL,
                                label_repel = TRUE,
                                font_label = c(7, imfgrey),
-                               font_family = primary_font,
+                               font_family = "Arial",
                                x_label = "",
                                y_label = "",
                                plot_title = "",
@@ -622,10 +617,10 @@ plot_scatter_chart <- function(input_data,
                                legend_title_format = ggplot2::element_blank(),
                                legend_position = "bottom",
                                legend_direction = "horizontal",
-                               legend_key_height = unit(0.45, "cm"),
-                               legend_key_width = unit(1.3, "cm"),
-                               legend_spacing_x = unit(0.2, "cm"),
-                               legend_spacing_y = unit(0.25, "cm"),
+                               legend_key_height = grid::unit(0.45, "cm"),
+                               legend_key_width = grid::unit(1.3, "cm"),
+                               legend_spacing_x = grid::unit(0.2, "cm"),
+                               legend_spacing_y = grid::unit(0.25, "cm"),
                                plotname = NA,
                                charttype = "single",
                                dpi = 600){
@@ -672,7 +667,7 @@ plot_scatter_chart <- function(input_data,
   if(isTRUE(panel)){
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf_panel(legend_title_format=legend_title_format,
+      theme_imf_panel_2027(legend_title_format=legend_title_format,
                       legend_position=legend_position,
                       legend_direction=legend_direction,
                       legend_key_height=legend_key_height,
@@ -689,7 +684,7 @@ plot_scatter_chart <- function(input_data,
   }else{
     ggplot_plot_with_theme <-
       ggplot_plot +
-      theme_imf(legend_title_format=legend_title_format,
+      theme_imf_2027(legend_title_format=legend_title_format,
                 legend_position=legend_position,
                 legend_direction=legend_direction,
                 legend_key_height=legend_key_height,
@@ -739,7 +734,15 @@ ggsave_imf <- function(plot, filename, width = NULL, height = NULL, dpi = NULL) 
   dpi <- ifelse(is.null(dpi), getOption("imf_dpi", 600), dpi)
 
   # Save using ggsave with IMF defaults
-  ggsave(filename, plot = plot, width = width, height = height, dpi = dpi, units = "in")
+  gplot2::ggsave(
+    filename = filename,
+    plot = plot,
+    device = ragg::agg_png,
+    width = width,
+    height = height,
+    units = "in",
+    dpi = dpi
+  )
 }
 
 # ------------------------------------------------------------------------------
@@ -773,7 +776,7 @@ save_plot <- function(plot, filename, type = "single", dpi = NULL, width = NULL,
 #' @param y_right_lbl Right y-axis label.
 #' @param plot_subtitle Optional subtitle for the chart.
 #' @param caption Optional caption for the chart.
-#' @param panel Logical, whether to apply `theme_imf_panel()` (TRUE) or `theme_imf()` (FALSE).
+#' @param panel Logical, whether to apply `theme_imf_panel_2027()` (TRUE) or `theme_imf_2027()` (FALSE).
 #' @param plotname Optional filename (e.g., "plot.png") to save the plot.
 #' @param charttype One of "single", "full_panel", or "half_panel" to set dimensions if saving.
 #' @param dpi Image resolution in dots per inch. Default is 600.
@@ -845,36 +848,36 @@ plot_dual_axis <- function(data,
       x = NULL
     ) +
     ggplot2::theme(
-      plot.title = ggplot2::element_text(family = primary_font, size = 24, face = "bold", hjust = 0, color = imfblue),
-      plot.subtitle = ggplot2::element_text(family = primary_font, size = 18, face = "plain", hjust = 0),
-      plot.caption = ggplot2::element_text(family = primary_font, size = 12, hjust = 0),
-      axis.title.y = ggplot2::element_text(color = "steelblue", size = 14, family = primary_font),
-      axis.title.y.right = ggplot2::element_text(color = "firebrick", size = 14, family = primary_font)
+      plot.title = ggplot2::element_text(family = "Arial", size = 24, face = "bold", hjust = 0, color = imfblue),
+      plot.subtitle = ggplot2::element_text(family = "Arial", size = 18, face = "plain", hjust = 0),
+      plot.caption = ggplot2::element_text(family = "Arial", size = 12, hjust = 0),
+      axis.title.y = ggplot2::element_text(color = "steelblue", size = 14, family = "Arial"),
+      axis.title.y.right = ggplot2::element_text(color = "firebrick", size = 14, family = "Arial")
     )
 
   # Apply IMF theme
   p <- p + if (isTRUE(panel)) {
-    theme_imf_panel()
+    theme_imf_panel_2027()
   } else {
-    theme_imf()
+    theme_imf_2027()
   }
 
   # Reapply text and axis title styling in case theme overrides them
   p <- p + ggplot2::theme(
-    plot.title = ggplot2::element_text(family = primary_font, size = 24, face = "bold", hjust = 0, color = imfblue),
-    plot.subtitle = ggplot2::element_text(family = primary_font, size = 18, face = "plain", hjust = 0),
-    plot.caption = ggplot2::element_text(family = primary_font, size = 12, hjust = 0),
+    plot.title = ggplot2::element_text(family = "Arial", size = 24, face = "bold", hjust = 0, color = imfblue),
+    plot.subtitle = ggplot2::element_text(family = "Arial", size = 18, face = "plain", hjust = 0),
+    plot.caption = ggplot2::element_text(family = "Arial", size = 12, hjust = 0),
     axis.title.y = ggplot2::element_text(
       angle = 90,  # rotate label vertically
       color = "steelblue",
       size = 14,
-      family = primary_font
+      family = "Arial"
     ),
     axis.title.y.right = ggplot2::element_text(
       angle = -90,  # rotate vertically for right side
       color = "firebrick",
       size = 14,
-      family = primary_font
+      family = "Arial"
     )
 
   )

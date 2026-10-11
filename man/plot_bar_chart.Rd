@@ -35,10 +35,10 @@ plot_bar_chart(
   legend_title_format = ggplot2::element_blank(),
   legend_position = "bottom",
   legend_direction = "horizontal",
-  legend_key_height = unit(0.45, "cm"),
-  legend_key_width = unit(1.3, "cm"),
-  legend_spacing_x = unit(0.2, "cm"),
-  legend_spacing_y = unit(0.25, "cm"),
+  legend_key_height = grid::unit(0.45, "cm"),
+  legend_key_width = grid::unit(1.3, "cm"),
+  legend_spacing_x = grid::unit(0.2, "cm"),
+  legend_spacing_y = grid::unit(0.25, "cm"),
   plotname = NA,
   charttype = "single",
   dpi = 600
@@ -115,10 +115,10 @@ Determines the size of the output file if \code{plotname} is provided.}
 \item{dpi}{Resolution to use if \code{plotname} is specified and applicable. Defaults to \code{600}}
 }
 \description{
-Creates a \link{ggplot2} bar chart with IMF stylings. Takes in at minimum a
+Creates a \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} bar chart with IMF stylings. Takes in at minimum a
 data.frame or similar and column names for x and y.
-See also \code{\link[bookr:plot_line_chart]{bookr::plot_line_chart()}} and \code{\link[bookr:plot_scatter_chart]{bookr::plot_scatter_chart()}}.
-Wrapper function for \code{\link[ggpubr:ggbarplot]{ggpubr::ggbarplot()}}, which is a wrapper for \link{ggplot2}.
+See also \code{\link[=plot_line_chart]{plot_line_chart()}} and \code{\link[=plot_scatter_chart]{plot_scatter_chart()}}.
+Wrapper function for \code{\link[ggpubr:ggbarplot]{ggpubr::ggbarplot()}}, which is a wrapper for \link[ggplot2:ggplot2-package]{ggplot2::ggplot2}.
 }
 \examples{
 plot_bar_chart(gdp, "dates", "GDP", plot_title="US GDP")

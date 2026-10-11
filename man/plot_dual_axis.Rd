@@ -38,7 +38,7 @@ plot_dual_axis(
 
 \item{caption}{Optional caption for the chart.}
 
-\item{panel}{Logical, whether to apply \code{theme_imf_panel()} (TRUE) or \code{theme_imf()} (FALSE).}
+\item{panel}{Logical, whether to apply \code{theme_imf_panel_2027()} (TRUE) or \code{theme_imf_2027()} (FALSE).}
 
 \item{plotname}{Optional filename (e.g., "plot.png") to save the plot.}
 
