@@ -11,7 +11,7 @@ Library to generate IMF-style charts for publications. Functions to generate lin
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://r-tutorial}
+  \item \url{https://github.com/BasBBakkerIMF/imfbookr}
 }
 
 }

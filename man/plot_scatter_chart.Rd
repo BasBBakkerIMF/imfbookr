@@ -108,7 +108,7 @@ given, use that column's values to change marker colors.}
 \description{
 Creates a \link{ggplot2} scatter chart with IMF stylings. Takes in at minimum a
 data.frame or similar and column names for x and y.
-See also \code{\link[bookr:plot_line_chart]{bookr::plot_line_chart()}} and \code{\link[bookr:plot_bar_chart]{bookr::plot_bar_chart()}}.
+See also \code{\link[=plot_line_chart]{plot_line_chart()}} and \code{\link[=plot_bar_chart]{plot_bar_chart()}}.
 Wrapper function for \code{\link[ggpubr:ggscatter]{ggpubr::ggscatter()}}, which is a wrapper for \link{ggplot2}.
 }
 \examples{

@@ -112,7 +112,7 @@ Determines the size of the output file if \code{plotname} is provided.}
 \description{
 Create a ggplot2 line chart with IMF stylings. Takes in at minimum a
 data.frame or similar and column names for x and y.
-See also \code{\link[bookr:plot_bar_chart]{bookr::plot_bar_chart()}} and \code{\link[bookr:plot_scatter_chart]{bookr::plot_scatter_chart()}}.
+See also \code{\link[=plot_bar_chart]{plot_bar_chart()}} and \code{\link[=plot_scatter_chart]{plot_scatter_chart()}}.
 Wrapper function for \code{\link[ggpubr:ggline]{ggpubr::ggline()}}, which is a wrapper for \link{pggplot2}.
 }
 \examples{

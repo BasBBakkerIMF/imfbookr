@@ -61,7 +61,7 @@ ggplot(test_data, aes(value1, value2, color = category)) +
 library(ggplot2)
 library(dplyr)
 library(patchwork)  # Required for combining multiple plots
-library(bookr)  # Load bookr to check default colors
+library(imfbookr)  # Load bookr to check default colors
 
 # Generate test data (12 months)
 set.seed(123)
