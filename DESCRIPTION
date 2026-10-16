@@ -1,15 +1,14 @@
 Package: imfbookr
 Type: Package
 Title: Generate IMF-style Charts
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
   person("Bas", "Bakker", email="BBakker@imf.org", role = c("aut", "cre")),
   person("Greta", "Polo", email="gpolo@imf.org", role = c("aut")))
 Maintainer: Bas Bakker <bbakker@imf.org>, Greta Polo <gpolo@imf.org>
 URL: https://github.com/BasBBakkerIMF/imfbookr
 Description: Library to generate IMF-style charts for publications.
-    Functions to generate line charts, bar charts, scatter charts.
-License: What license is it under?
+    License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 Imports:
