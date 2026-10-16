@@ -2,7 +2,7 @@
 % Please edit documentation in R/bb-imf-themes.R, R/imf-themes.R
 \name{theme_imf_panel}
 \alias{theme_imf_panel}
-\title{IMF-Themed Panel ggplot2 Theme}
+\title{IMF panel ggplot2 theme}
 \usage{
 theme_imf_panel(
   myfont = .imf_primary_font(),
@@ -29,17 +29,24 @@ theme_imf_panel(
 )
 }
 \arguments{
-\item{myfont}{Font family to use (default: option 'imfbookr.primary_font' or 'Arial').}
+\item{myfont}{Font family. Defaults to Segoe UI when installed,
+otherwise "sans".}
 
-\item{myfontColor}{Color for title and subtitle (default: \code{imfblue}).}
+\item{myfontColor}{Color used for plot title and subtitle.}
 
-\item{legend_title_format}{Formatting for the legend title (default: \code{element_blank()}).}
+\item{legend_title_format}{Formatting for legend title.}
 
-\item{legend_position}{Position of the legend (default: \code{"bottom"}).}
+\item{legend_position}{Legend position.}
 
-\item{legend_direction}{Direction of legend items (\code{"horizontal"} or \code{"vertical"}).}
+\item{legend_direction}{Legend direction.}
 
-\item{legend_key_height, legend_key_width, legend_spacing_x, legend_spacing_y}{Size and spacing of legend elements.}
+\item{legend_key_height}{Height of legend keys.}
+
+\item{legend_key_width}{Width of legend keys.}
+
+\item{legend_spacing_x}{Horizontal legend spacing.}
+
+\item{legend_spacing_y}{Vertical legend spacing.}
 }
 \value{
 A ggplot2 theme for panel charts.
@@ -47,7 +54,5 @@ A ggplot2 theme for panel charts.
 A ggplot2 theme for panel charts.
 }
 \description{
-Similar to \code{theme_imf()} but optimized for panel charts with smaller text sizes.
-
 Similar to \code{theme_imf()} but optimized for panel charts with smaller text sizes.
 }

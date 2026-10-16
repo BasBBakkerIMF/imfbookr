@@ -2,14 +2,20 @@
 % Please edit documentation in R/bb-imf-themes.R, R/imf-themes.R
 \name{scale_imf_colors}
 \alias{scale_imf_colors}
-\title{Apply IMF Colors to ggplot2 helper function dynamically}
+\title{Apply IMF colors to ggplot2 scales}
 \usage{
 scale_imf_colors(n = NULL)
 
 scale_imf_colors(n = NULL)
 }
+\arguments{
+\item{n}{Optional number of categories.}
+}
+\value{
+A list of ggplot2 color and fill scales.
+}
 \description{
-Apply IMF Colors to ggplot2 helper function dynamically
+Apply IMF colors to ggplot2 scales
 
 Apply IMF Colors to ggplot2 helper function dynamically
 }

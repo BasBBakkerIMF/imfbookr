@@ -1,8 +1,8 @@
 
 #When initially loading, perform these steps
-install.packages("devtools")
-install.packages("usethat")
-install.packages("roxygen2")
+#install.packages("devtools")
+#install.packages("usethat")
+#install.packages("roxygen2")
 library(devtools)
 library(usethat)
 library(roxygen2)
