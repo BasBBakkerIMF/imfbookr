@@ -13,4 +13,3 @@ devtools::document()
 devtools::load_all()
 devtools::install()
 library(imfbookr)  # Reload the updated package
-
