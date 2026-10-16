@@ -1,69 +1,3 @@
-#' Convert RGB values to a color string
-#'
-#' @param red Red component (0-255).
-#' @param green Green component (0-255).
-#' @param blue Blue component (0-255).
-#' @return A color string.
-#' @export
-rgb2 <- function(red, green, blue) {
-  col <- rgb(red, green, blue, maxColorValue = 255)
-  return(col)
-}
-
-
-reoHeight <- 2 * 1.82
-reoWidth <- 2 * 2.92
-
-
-blue <- rgb2(0, 76, 151)
-green <- rgb2(150, 186, 121)
-red <- rgb2(192, 0, 80)
-grey <- rgb2(166, 168, 172)
-light_green <- rgb2(150, 215, 130)
-light_grey <- rgb2(211, 211, 211)
-light_red <- rgb2(238, 36, 0)
-dark_red <- rgb2(144, 0, 0)
-light_blue <- rgb2(202, 224, 251)
-dark_blue <- rgb2(14, 16, 116)
-purple <- rgb2(146, 60, 194)
-orange <- rgb2(255, 133, 71)
-
-
-#' List of IMF colors
-#'
-#' @export
-A4_colors <- c(
-  blue,
-  green,
-  grey,
-  light_green,
-  light_grey,
-  light_red,
-  dark_red
-)
-
-
-#' List of IMF colors for bar charts
-#'
-#' @export
-A4_colors_bar <- c(
-  blue,
-  green,
-  red,
-  grey,
-  "black",
-  light_green,
-  light_grey,
-  light_red,
-  dark_red
-)
-
-
-segoe_font <- "Segoe UI"
-arial_font <- "Arial"
-
-
-
 
 
 #' IMF 2027 ggplot2 theme
@@ -126,7 +60,18 @@ theme_imf_2027 <- function(
         )
       ),
       
-      axis.title = ggplot2::element_blank(),
+      axis.title.x = ggplot2::element_text(
+        size = 14,
+        family = myfont
+      ),
+      axis.title.y = ggplot2::element_text(
+        size = 14,
+        family = myfont
+      ),
+      axis.title.y.right = ggplot2::element_text(
+        size = 14,
+        family = myfont
+      ),
       
       axis.ticks.x = ggplot2::element_blank(),
       
@@ -252,7 +197,18 @@ theme_imf_panel_2027 <- function(
         )
       ),
       
-      axis.title = ggplot2::element_blank(),
+      axis.title.x = ggplot2::element_text(
+        size = 10,
+        family = myfont
+      ),
+      axis.title.y = ggplot2::element_text(
+        size = 10,
+        family = myfont
+      ),
+      axis.title.y.right = ggplot2::element_text(
+        size = 10,
+        family = myfont
+      ),
       
       axis.ticks.x = ggplot2::element_blank(),
       
@@ -315,4 +271,27 @@ theme_imf_panel_2027 <- function(
       legend.spacing.x = legend_spacing_x,
       legend.spacing.y = legend_spacing_y
     )
+}
+
+
+#' IMF 2027 overall panel title theme
+#'
+#' @return A ggplot2 theme.
+#' @export
+theme_imf_panel_title_2027 <- function() {
+  theme(
+    plot.title = element_text(
+      family = "Arial",
+      size = 16,
+      face = "bold",
+      colour = blue_2027,
+      hjust = 0.5
+    ),
+    plot.subtitle = element_text(
+      family = "Arial",
+      size = 12,
+      colour = blue_2027,
+      hjust = 0.5
+    )
+  )
 }
