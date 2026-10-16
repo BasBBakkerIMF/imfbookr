@@ -1,45 +1,20 @@
 # imfbookr
 
 
-`imfbookr` provides helper functions to produce ggplot charts with IMF
-themes.
+# imfbookr
 
-<table data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr>
-<td data-bgcolor="#f2f2f2"><h3
-id="new-imf-staff-report-chart-themes-2027">New IMF Staff Report Chart
-Themes (2027)</h3>
-<p>The IMF has introduced new themes for charts in staff reports. The
-main changes are:</p>
-<ul>
-<li><strong>Font:</strong> Arial replaces Segoe UI.</li>
-<li><strong>Chart titles:</strong> Titles are now black rather than
-blue.</li>
-<li><strong>Blue color:</strong> The previous IMF blue has been replaced
-by a different shade of blue.</li>
-</ul>
-<p>To use the new themes, replace <code>theme_imf()</code> and
-<code>theme_imf_panel()</code> with <code>theme_imf_2027()</code> and
-<code>theme_imf_panel_2027()</code>, respectively. The new blue is
-available as <code>imf_blue_2027</code>.</p>
-<p>The previous themes remain available for charts using the earlier
-style.</p></td>
-</tr>
-</tbody>
-</table>
+`imfbookr` provides helper functions to streamline IMF-style book
+writing with reproducible R code and standardized charting. It is based
+on the original `bookr` package, extended for IMF workflows.
 
 ------------------------------------------------------------------------
 
 ## Pre-requisites
 
-Before installing `imfbookr`, install `devtools` if you do not already
-have it:
+Before installing `imfbookr`, you need devtools ifyou do not have it.
 
 ``` r
+# install devtools if you don't have it
 install.packages("devtools")
 library(devtools)
 ```
@@ -60,8 +35,8 @@ fallback:
 url <- "https://codeload.github.com/BasBBakkerIMF/imfbookr/tar.gz/HEAD"
 tf  <- tempfile(fileext = ".tar.gz")
 
-curl::curl_download(url, tf)
-remotes::install_local(tf)
+curl::curl_download(url, tf)        # fetch with curl
+remotes::install_local(tf)          # install from the downloaded file
 ```
 
 After installation, load the package with:
@@ -75,6 +50,7 @@ library(imfbookr)
 - Predefined **IMF color palettes** for charts.
 - Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).
 
+
 ## Usage
 
 The following examples demonstrate how to use `imfbookr` functions to
@@ -86,7 +62,7 @@ themes.
 
 The package includes a set of predefined color constants and palettes
 consistent with IMF/WEO visual standards. You can use these colors
-directly in plots or via helper scales like `scale_imf_colors()`.
+directly in plots or via helper scales like scale_imf_colors().
 
 ### Quick start (example data)
 
@@ -94,14 +70,13 @@ To illustrate functionality, we generate a simple dataset with 12 months
 of values across three categories:
 
 ``` r
-library(imfbookr)
 library(ggplot2)
 library(dplyr)
 
 set.seed(123)
 test_data <- data.frame(
   dates    = seq(as.Date("2020-01-01"), by = "month", length.out = 12),
-  category = rep(c("A", "B", "C"), each = 4),
+  category = rep(c("A","B","C"), each = 4),
   value1   = runif(12, 50, 100),
   value2   = runif(12, 20, 80)
 )
@@ -113,30 +88,20 @@ output looks like for a line, bar, and scatter chart.
 ``` r
 # Line
 ggplot(test_data, aes(dates, value1, color = category)) +
-  geom_line(linewidth = 1.5) +
+  geom_line(size = 1.5) +
   labs(title = "Default Line Chart Colors",
        subtitle = "Baseline without IMF color scale")
-```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-2-1.png)
-
-``` r
 # Stacked bar
 ggplot(test_data, aes(dates, value1, fill = category)) +
   geom_bar(stat = "identity", position = "stack") +
   labs(title = "Default Stacked Bar Colors")
-```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-2-2.png)
-
-``` r
 # Scatter
 ggplot(test_data, aes(value1, value2, color = category)) +
   geom_point(size = 3) +
   labs(title = "Default Scatter Colors")
 ```
-
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-2-3.png)
 
 Now we apply the IMF color palette using `scale_imf_colors()`. This
 ensures all charts use standardized IMF colors.
@@ -144,24 +109,16 @@ ensures all charts use standardized IMF colors.
 ``` r
 # Line with IMF colors
 ggplot(test_data, aes(dates, value1, color = category)) +
-  geom_line(linewidth = 1.5) +
+  geom_line(size = 1.5) +
   scale_imf_colors() +
   labs(title = "IMF Line Chart Colors")
-```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-3-1.png)
-
-``` r
 # Stacked bar with IMF colors
 ggplot(test_data, aes(dates, value1, fill = category)) +
   geom_bar(stat = "identity", position = "stack") +
   scale_imf_colors() +
   labs(title = "IMF Stacked Bar Colors")
-```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-3-2.png)
-
-``` r
 # Scatter with IMF colors
 ggplot(test_data, aes(value1, value2, color = category)) +
   geom_point(size = 3) +
@@ -169,38 +126,15 @@ ggplot(test_data, aes(value1, value2, color = category)) +
   labs(title = "IMF Scatter Colors")
 ```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-3-3.png)
-
-## IMF Chart Themes
-
-Use `theme_imf()` for a standalone chart. It applies the standard IMF
-formatting to the plot, while `scale_imf_colors()` controls the series
-colors.
-
-``` r
-ggplot(test_data, aes(dates, value1, color = category)) +
-  geom_line(linewidth = 1.2) +
-  scale_imf_colors() +
-  labs(
-    title = "IMF Chart Using theme_imf()",
-    subtitle = "Monthly example data",
-    x = NULL,
-    y = "Value"
-  ) +
-  theme_imf()
-```
-
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-4-1.png)
-
-For multi-chart presentations, use `theme_imf_panel()` with `patchwork`
-to apply consistent panel formatting to the individual charts. The
-following example combines three charts into one figure.
+For multi-chart presentations, `theme_imf_panel()` combined with
+`patchwork` makes it easy to arrange multiple plots in a consistent
+layout.
 
 ``` r
 library(patchwork)
 
 p1 <- ggplot(test_data, aes(dates, value1, color = category)) +
-  geom_line(linewidth = 1.5) +
+  geom_line(size = 1.5) +
   scale_imf_colors() +
   labs(title = "IMF Line Chart", subtitle = "IMF palette")
 
@@ -215,11 +149,31 @@ p3 <- ggplot(test_data, aes(value1, value2, color = category)) +
   labs(title = "IMF Scatter", subtitle = "IMF palette")
 
 (p1 | p2) / p3 +
-  plot_annotation(
-    title = "Panel Test: theme_imf_panel()",
-    subtitle = "Multiple plots in a panel layout"
-  ) &
+  plot_annotation(title = "Panel Test: theme_imf_panel()",
+                  subtitle = "Multiple plots in a panel layout") &
   theme_imf_panel()
 ```
 
-![](README.markdown_strict_files/figure-markdown_strict/unnamed-chunk-5-1.png)
+`imfbookr` also supports dual-axis plots, useful for showing two related
+time series on different scales.
+
+``` r
+df <- tibble::tibble(
+  date  = seq.Date(from = as.Date("2020-01-01"), by = "month", length.out = 12),
+  left  = rnorm(12, 100, 10),
+  right = rnorm(12, 5, 1)
+)
+
+plot_dual_axis(
+  df,
+  left, right,
+  plot_title   = "Sample Dual Axis Chart",
+  plot_subtitle= "Retail Sales vs Inflation Index (2020–2021)",
+  y_left_lbl   = "Retail Sales",
+  y_right_lbl  = "Inflation Index"
+)
+```
+
+Additional charting functions to create simple line charts, bar charts,
+and scatter charts are also available within the R book under the custom
+functions tutorial in Various Issues.
