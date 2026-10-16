@@ -2,7 +2,7 @@
 % Please edit documentation in R/bb-imf-themes.R, R/imf-themes.R
 \name{theme_imf}
 \alias{theme_imf}
-\title{IMF-Themed ggplot2 Theme}
+\title{IMF ggplot2 theme}
 \usage{
 theme_imf(
   myfont = .imf_primary_font(),
@@ -43,6 +43,14 @@ theme_imf(
 
 \item{legend_direction}{Direction of legend items (\code{"horizontal"} or \code{"vertical"}).}
 
+\item{legend_key_height}{Height of legend keys.}
+
+\item{legend_key_width}{Width of legend keys.}
+
+\item{legend_spacing_x}{Horizontal legend spacing.}
+
+\item{legend_spacing_y}{Vertical legend spacing.}
+
 \item{legend_key_height, legend_key_width, legend_spacing_x, legend_spacing_y}{Size and spacing of legend elements.}
 }
 \value{
@@ -51,7 +59,5 @@ A ggplot2 theme.
 A ggplot2 theme.
 }
 \description{
-Applies an IMF-style ggplot2 theme with customized fonts, colors, and layout.
-
 Applies an IMF-style ggplot2 theme with customized fonts, colors, and layout.
 }

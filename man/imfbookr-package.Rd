@@ -6,7 +6,7 @@
 \alias{imfbookr-package}
 \title{imfbookr: Generate IMF-style Charts}
 \description{
-Library to generate IMF-style charts for publications. Functions to generate line charts, bar charts, scatter charts.
+Library to generate IMF-style charts for publications. License: What license is it under?
 }
 \seealso{
 Useful links:
