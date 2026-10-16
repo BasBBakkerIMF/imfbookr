@@ -1,54 +1,45 @@
 # imfbookr
 
 
-<style>
-.imf-notice {
-  background-color: #f2f2f2;
-  border: 1px solid #d5d5d5;
-  border-radius: 6px;
-  padding: 18px 24px;
-  margin: 20px 0 30px 0;
-}
-
-.imf-notice h2 {
-  margin-top: 0;
-  font-size: 1.25rem;
-  color: #333333;
-}
-
-.imf-notice p:last-child {
-  margin-bottom: 0;
-}
-</style>
-
 `imfbookr` provides helper functions to produce ggplot charts with IMF
 themes.
 
-## New IMF Staff Report Chart Themes (2027)
-
-The IMF has introduced new themes for charts in staff reports. The main
-changes are:
-
-- **Font:** Arial replaces Segoe UI.
-- **Chart titles:** Titles are now black rather than blue.
-- **Blue color:** The previous IMF blue has been replaced by a different
-  shade of blue.
-
-To use the new themes, replace `theme_imf()` and `theme_imf_panel()`
-with `theme_imf_2027()` and `theme_imf_panel_2027()`, respectively. The
-new blue is available as `imf_blue_2027`.
-
-The previous themes remain available for charts using the earlier style.
+<table data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr>
+<td data-bgcolor="#f2f2f2"><h3
+id="new-imf-staff-report-chart-themes-2027">New IMF Staff Report Chart
+Themes (2027)</h3>
+<p>The IMF has introduced new themes for charts in staff reports. The
+main changes are:</p>
+<ul>
+<li><strong>Font:</strong> Arial replaces Segoe UI.</li>
+<li><strong>Chart titles:</strong> Titles are now black rather than
+blue.</li>
+<li><strong>Blue color:</strong> The previous IMF blue has been replaced
+by a different shade of blue.</li>
+</ul>
+<p>To use the new themes, replace <code>theme_imf()</code> and
+<code>theme_imf_panel()</code> with <code>theme_imf_2027()</code> and
+<code>theme_imf_panel_2027()</code>, respectively. The new blue is
+available as <code>imf_blue_2027</code>.</p>
+<p>The previous themes remain available for charts using the earlier
+style.</p></td>
+</tr>
+</tbody>
+</table>
 
 ------------------------------------------------------------------------
 
 ## Pre-requisites
 
-Before installing `imfbookr`, you need `devtools` if you do not already
-have it.
+Before installing `imfbookr`, install `devtools` if you do not already
+have it:
 
 ``` r
-# Install devtools if you don't have it
 install.packages("devtools")
 library(devtools)
 ```
