@@ -11,7 +11,7 @@ rgb2 <- function(red, green, blue) {
 reoHeight <- 2 * 1.82
 reoWidth <- 2 * 2.92
 blue <- rgb2(75, 130, 173)
-blue_2027<-rgb2(0, 76, 151)
+blue_2027 <- rgb2(0, 76, 151)
 green <- rgb2(150, 186, 121)
 red <- rgb2(192, 0, 80)
 grey <- rgb2(166, 168, 172)
@@ -27,6 +27,7 @@ orange <- rgb2(255, 133, 71)
 #' IMF blue
 #' @export
 imfblue <- blue
+#' IMF 2027 blue
 #' @export
 imfblue_2027 <- blue_2027
 #' IMF green
@@ -109,6 +110,9 @@ scale_imf_colors <- function(n = NULL) {
 }
 
 
+#' List of IMF 2027 colors
+#'
+#' @export
 A4_colors_2027 <- c(
   blue_2027,
   green,

@@ -29,7 +29,6 @@ theme_imf <- function(
     legend_spacing_x = grid::unit(0.2, "cm"),
     legend_spacing_y = grid::unit(0.25, "cm")
 ) {
-  message("theme_imf font: ", myfont)
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(
@@ -146,7 +145,6 @@ theme_imf_panel <- function(
     legend_spacing_x = grid::unit(0.2, "cm"),
     legend_spacing_y = grid::unit(0.25, "cm")
 ) {
-  message("theme_imf_panel font: ", myfont)
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(
@@ -243,15 +241,15 @@ theme_imf_panel <- function(
 #' @return A ggplot2 theme.
 #' @export
 theme_imf_panel_title <- function() {
-  theme(
-    plot.title = element_text(
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(
       family = "Arial",
       size = 16,
       face = "bold",
       colour = blue,
       hjust = 0.5
     ),
-    plot.subtitle = element_text(
+    plot.subtitle = ggplot2::element_text(
       family = "Arial",
       size = 12,
       colour = blue,
