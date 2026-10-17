@@ -28,8 +28,6 @@ theme_imf_2027 <- function(
   
   
   
-  message("theme_imf_2027 font: ", myfont)
-  
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(
@@ -165,8 +163,6 @@ theme_imf_panel_2027 <- function(
   
   
   
-  message("theme_imf_panel_2027 font: ", myfont)
-  
   ggplot2::theme_classic() +
     ggplot2::theme(
       text = ggplot2::element_text(
@@ -279,15 +275,15 @@ theme_imf_panel_2027 <- function(
 #' @return A ggplot2 theme.
 #' @export
 theme_imf_panel_title_2027 <- function() {
-  theme(
-    plot.title = element_text(
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(
       family = "Arial",
       size = 16,
       face = "bold",
       colour = blue_2027,
       hjust = 0.5
     ),
-    plot.subtitle = element_text(
+    plot.subtitle = ggplot2::element_text(
       family = "Arial",
       size = 12,
       colour = blue_2027,

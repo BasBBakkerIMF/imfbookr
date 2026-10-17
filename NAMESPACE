@@ -2,6 +2,7 @@
 
 export("%>%")
 export(A4_colors)
+export(A4_colors_2027)
 export(A4_colors_bar)
 export(A4_colors_bar_2027)
 export(get_dimensions)
