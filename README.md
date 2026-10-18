@@ -34,29 +34,30 @@ style.</p></td>
 
 ------------------------------------------------------------------------
 
-## Pre-requisites
-
-Before installing `imfbookr`, install `devtools` if you do not already
-have it:
-
-``` r
-install.packages("devtools")
-library(devtools)
-```
-
 ## Installing `imfbookr`
 
-On most computers you can install directly from GitHub:
+Install `remotes` if needed, then install `imfbookr` from GitHub:
 
 ``` r
-library(remotes)
-remotes::install_git("https://github.com/BasBBakkerIMF/imfbookr.git")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+
+remotes::install_github("BasBBakkerIMF/imfbookr")
 ```
 
-On some IMF computers that does not work. In that case, use this
-fallback:
+If direct GitHub installation is blocked on your computer, download the
+source archive and install it locally instead:
 
 ``` r
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
+
+if (!requireNamespace("curl", quietly = TRUE)) {
+  install.packages("curl")
+}
+
 url <- "https://codeload.github.com/BasBBakkerIMF/imfbookr/tar.gz/HEAD"
 tf  <- tempfile(fileext = ".tar.gz")
 
@@ -96,7 +97,6 @@ of values across three categories:
 ``` r
 library(imfbookr)
 library(ggplot2)
-library(dplyr)
 
 set.seed(123)
 test_data <- data.frame(
@@ -193,8 +193,14 @@ ggplot(test_data, aes(dates, value1, color = category)) +
 ![](README_files/figure-commonmark/unnamed-chunk-4-1.png)
 
 For multi-chart presentations, use `theme_imf_panel()` with `patchwork`
-to apply consistent panel formatting to the individual charts. The
-following example combines three charts into one figure.
+to apply consistent panel formatting to the individual charts. This
+optional package is needed only for the panel example:
+
+``` r
+install.packages("patchwork")
+```
+
+The following example combines three charts into one figure.
 
 ``` r
 library(patchwork)
