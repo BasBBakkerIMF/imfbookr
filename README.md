@@ -25,7 +25,7 @@ by a different shade of blue.</li>
 <p>To use the new themes, replace <code>theme_imf()</code> and
 <code>theme_imf_panel()</code> with <code>theme_imf_2027()</code> and
 <code>theme_imf_panel_2027()</code>, respectively. The new blue is
-available as <code>imf_blue_2027</code>.</p>
+available as <code>imfblue_2027</code>.</p>
 <p>The previous themes remain available for charts using the earlier
 style.</p></td>
 </tr>
