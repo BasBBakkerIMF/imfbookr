@@ -22,20 +22,20 @@ execute:
 <li><strong>Chart titles:</strong> Titles are now black rather than blue.</li>
 <li><strong>Blue color:</strong> The previous IMF blue has been replaced by a different shade of blue.</li>
 </ul>
-<p>To use the new themes, replace <code>theme_imf()</code> and <code>theme_imf_panel()</code> with <code>theme_imf_2027()</code> and <code>theme_imf_panel_2027()</code>, respectively. The new blue is available as <code>imf_blue_2027</code>.</p>
+<p>To use the new themes, replace <code>theme_imf()</code> and <code>theme_imf_panel()</code> with <code>theme_imf_2027()</code> and <code>theme_imf_panel_2027()</code>, respectively. The new blue is available as <code>imfblue_2027</code>.</p>
 <p>The previous themes remain available for charts using the earlier style.</p>
 </td>
 </tr>
 </table>
 ```
 
----
+------------------------------------------------------------------------
 
 ## Installing `imfbookr`
 
 Install `remotes` if needed, then install `imfbookr` from GitHub:
 
-```r
+``` r
 if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
@@ -43,10 +43,9 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 remotes::install_github("BasBBakkerIMF/imfbookr")
 ```
 
-If direct GitHub installation is blocked on your computer, download the source
-archive and install it locally instead:
+If direct GitHub installation is blocked on your computer, download the source archive and install it locally instead:
 
-```r
+``` r
 if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
@@ -64,14 +63,14 @@ remotes::install_local(tf)
 
 After installation, load the package with:
 
-```r
+``` r
 library(imfbookr)
 ```
 
 ## Features
 
-- Predefined **IMF color palettes** for charts.
-- Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).
+-   Predefined **IMF color palettes** for charts.
+-   Custom **ggplot2 themes** (e.g., `theme_imf_panel()`).
 
 ## Usage
 
@@ -159,7 +158,7 @@ ggplot(test_data, aes(dates, value1, color = category)) +
 
 For multi-chart presentations, use `theme_imf_panel()` with `patchwork` to apply consistent panel formatting to the individual charts. This optional package is needed only for the panel example:
 
-```r
+``` r
 install.packages("patchwork")
 ```
 
@@ -197,8 +196,8 @@ p3 <- ggplot(test_data, aes(value1, value2, color = category)) +
   ) 
 ```
 
-
 With the new themes:
+
 ```{r}
 #| fig-width: 8.5
 #| fig-height: 11
@@ -231,4 +230,3 @@ p3 <- ggplot(test_data, aes(value1, value2, color = category)) +
 
 
 ```
-
